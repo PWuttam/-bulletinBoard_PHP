@@ -9,11 +9,20 @@
   <h1>いぬねこ掲示板</h1>
   <section>
     <h2>新規投稿</h2>
+
+    <!-- POSTでnameとmessageが投げられている -->
     <form action="send.php" method="post">
-      名前：<input type="text" name="name" value=""><br>
-      投稿内容：<input type="text" name="contents" value=""><br>
-      <button type="submit">投稿</button>
+      <label for="name">表示名：</label>
+      <input type="text" id="name" name="name"><br>
+      <label for="message">投稿メッセージ：</label>
+      <input type="text" id="message" name="message"><br>
+      <button type="submit">書き込む</button>
     </form>
+
+  </section>
+  <section>
+    <h2>投稿一覧</h2>
+    <p>投稿はまだありません</p>
   </section>
 </body>
 </html>
