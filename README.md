@@ -67,12 +67,14 @@ https://gray-code.com/php/make-the-board-vol1/
 ステップ2 新しいブランチを作り、pushする
 
    //わかりやすいブランチ名（英語で）と#27のように先ほどの数字を入れ、新しいブランチを作る
+   
    $ git checkout -b 新しいブランチ名と#と数字
 
  
    //今のmasterの状況を新しく作ったブランチにpushして同期させる
+   
    $ git push origin 新しいブランチ名と#と数字
-   Total 0 (delta 0), reused 0 (delta 0) remote: remote: Create a pull request for 'back-btn#27' on GitHub by visiting: remote:・・・・・・・・・・・
+   
 
     ターミナルを開き、issueをしたいディレクトリに移動し、ブランチがmasterになっていることを確認してください。
     一旦、準備はこれで終わったので、もくもくとissueに対応する作業をする。脱線しないように！
