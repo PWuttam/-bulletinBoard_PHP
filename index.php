@@ -31,6 +31,43 @@
         writeData();
       }
 
+      readData();
+
+      function readData(){
+        $keijiban_file = 'keijiban.txt';
+
+        // fopen ファイルもしくはURLを開く
+        // rb 互換性維持のためbフラグを指定するのが良い
+        // 読み込みならrb 書き込みならwb
+        $fp = fopen($keijiban_file, 'rb');
+
+        if ($fp){
+
+          // flock ファイルをロック
+          // LOCK_SH 共有ロック（読み取り可 書き込み禁止）
+          if (flock($fp, LOCK_SH)) {
+
+            // while文 条件式がtrueの場合に無限に当該処理をループ実行
+            // ! 否定の意味
+            // feof ファイルポインタが終端かどうか調べる
+            while(!feof($fp)) {
+
+              // fgets 指定したファイルから内容を1行読み込む
+              $buffer = fgets($fp);
+              print($buffer);
+
+            }
+
+            // LOCK_UN ロック解除
+            flock($fp, LOCK_UN);
+          } else {
+            print('ファイルロックに失敗しました');
+          }
+        }
+
+        fclose($fp);
+      }
+
       function writeData(){ // function ユーザー定義関数
               $personal_name = $_POST['personal_name'];
               $contents = $_POST['contents'];
