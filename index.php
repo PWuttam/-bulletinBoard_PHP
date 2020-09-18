@@ -17,6 +17,7 @@
       表示名：<br>
       <input type="text" name="personal_name"><br><br>
       投稿メッセージ：<br>
+      <!-- textareaにmaxlength="140"を入れても文字数制限できる -->
       <textarea name="contents" cols="40" rows="8"></textarea><br><br>
       <input type="submit" name="btn1" value="書き込む">
     </form>
