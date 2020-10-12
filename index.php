@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>いぬねこ掲示板</title>
+  <title>古い いぬねこ掲示板</title>
 </head>
 <body>
-  <h1>いぬねこ掲示板</h1>
+  <h1>古い いぬねこ掲示板</h1>
   <section>
     <h2>新規投稿</h2>
 
@@ -21,7 +21,6 @@
       <textarea name="contents" cols="40" rows="8" maxlength="140"></textarea><br><br>
       <input type="submit" name="btn1" value="書き込む">
     </form>
-
   </section>
   <section>
     <h2>投稿一覧</h2>
