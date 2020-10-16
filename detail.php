@@ -2,7 +2,8 @@
 
 require_once('dbc.php');
 
-$result = getMessage($_GET['id']);
+$dbc = new Dbc();
+$result = $dbc->getMessage($_GET['id']);
 
 ?>
 
