@@ -28,6 +28,6 @@ function messageValidate($komento) {
 }
 
 $dbc = new Dbc(); // インスタンス化
-$dbc->messageCreate($komento);
+$dbc->messageUpdate($komento);
 
 ?>
