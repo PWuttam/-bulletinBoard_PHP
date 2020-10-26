@@ -52,7 +52,7 @@ Class Dbc
   // 引数：$id
   // 返り値：$result
   function getMessage($id) {
-      // IDがからの場合
+      // IDが空の場合
       if(empty($id)) {
         exit('IDが不正です。');
       }
@@ -94,6 +94,30 @@ Class Dbc
       $stmt->execute();
       $dbh->commit(); // 実行が終わった後にコミット②トランザクション
       echo 'メッセージの投稿ができました！';
+    } catch (PDOException $e) {
+      $dbh->rollBack(); // DBを処理実行前の状態に巻き戻し③トランザクション
+      exit($e);
+    }
+  }
+
+  function messageUpdate($komento) {
+    $sql = "UPDATE message SET 
+              view_name = :view_name, comment = :comment
+            WHERE
+              id = :id";
+  
+    $dbh = $this->dbConnect();
+    $dbh->beginTransaction(); // トランザクション開始①トランザクション
+  
+    // データを入れる際にはエラーが起きやすいからtry&catchを使うべし
+    try {
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':view_name',$komento['view_name'], PDO::PARAM_STR);
+      $stmt->bindValue(':comment',$komento['comment'], PDO::PARAM_STR);
+      $stmt->bindValue(':id',$komento['id'], PDO::PARAM_INT);
+      $stmt->execute();
+      $dbh->commit(); // 実行が終わった後にコミット②トランザクション
+      echo 'メッセージの更新をしました！';
     } catch (PDOException $e) {
       $dbh->rollBack(); // DBを処理実行前の状態に巻き戻し③トランザクション
       exit($e);

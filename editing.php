@@ -2,11 +2,14 @@
 
 require_once('dbc.php');
 
-// Dbcというクラスのインスタンス化
 $dbc = new Dbc();
+$result = $dbc->getMessage($_GET['id']);
 
-//取得したデータを表示
-$messageData = $dbc->getAllMessage();
+// $resultの内容を表示させてわかりやすいように
+$id = $result['id'];
+$view_name = $result['view_name'];
+$post_at = $result['post_at'];
+$comment = $result['comment'];
 
 ?>
 
@@ -43,14 +46,15 @@ $messageData = $dbc->getAllMessage();
 </nav>
 
   <section id="new">
-    <h2>新規投稿</h2>
-    <form action="message_create.php" method="POST">
+    <h2>コメント更新フォーム</h2>
+    <form action="message_update.php" method="POST">
+      <input type="hidden" name="id" value="<?php echo $id ?>">
             <p>表示名：</p>
-            <input type="text" name="view_name"><br><br>
+            <input type="text" name="view_name" value="<?php echo $view_name ?>"><br><br>
             <p>投稿メッセージ：</p>
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <textarea name="comment" id="comment" cols="30" rows="10"><?php echo $comment ?></textarea>
             <br>
-            <input type="submit" value="書き込む"><br><br>
+            <input type="submit" value="更新"><br><br>
     </form>
   </section>
   <section>
